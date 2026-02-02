@@ -151,4 +151,57 @@ public static class InventoryManager
         Console.WriteLine("Product deleted successfully!");
     }
 
+    public static void SaveToFile()
+    {
+        string filePath = "inventory.txt";
+
+        using (StreamWriter writer = new StreamWriter(filePath))
+        {
+            for (int i = 0; i < names.Count; i++)
+            {
+                string line = $"{ids[i]}|{names[i]}|{quantities[i]}|{prices[i]}";
+                writer.WriteLine(line);
+            }
+        }
+
+        Console.WriteLine("Inventory saved to file successfully!");
+    }
+
+
+    public static void LoadFromFile()
+    {
+        string filePath = "inventory.txt";
+
+        if (!File.Exists(filePath))
+        {
+            Console.WriteLine("No saved inventory file found!");
+            return;
+        }
+
+        names.Clear();
+        ids.Clear();
+        quantities.Clear();
+        prices.Clear();
+
+        string[] lines = File.ReadAllLines(filePath);
+
+        foreach (string line in lines)
+        {
+            string[] parts = line.Split('|');
+
+            int id = int.Parse(parts[0]);
+            string name = parts[1];
+            int quantity = int.Parse(parts[2]);
+            int price = int.Parse(parts[3]);
+
+            ids.Add(id);
+            names.Add(name);
+            quantities.Add(quantity);
+            prices.Add(price);
+        }
+
+        Console.BackgroundColor = ConsoleColor.Gray;
+        Console.WriteLine("Inventory loaded from file successfully!");
+        Console.ResetColor();
+    }
 }

@@ -10,7 +10,8 @@ namespace InventoryManagementSystem
     {
         static void Main(string[] args)
         {
-
+            InventoryManager.LoadFromFile();
+            
             while (true) 
             {
                 InventoryManager.ShowMenu();
@@ -35,6 +36,7 @@ namespace InventoryManagementSystem
                         break;
 
                     case "5":
+                        InventoryManager.SaveToFile();
                         Console.WriteLine("Exiting... Goodbye!");
                         return;
 
