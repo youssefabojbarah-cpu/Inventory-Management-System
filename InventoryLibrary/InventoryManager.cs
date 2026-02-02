@@ -45,4 +45,22 @@ public static class InventoryManager
 
         Console.WriteLine("✅ Product added successfully!");
     }
+    public static void ViewInventory()
+    {
+        if (names.Count == 0)
+        {
+            Console.WriteLine("There are no product in inventory!");
+            return;
+        }
+
+        Console.BackgroundColor = ConsoleColor.Red;
+        Console.WriteLine("----- Inventory -----");
+        Console.ResetColor();
+        for (int i = 0; i < names.Count; i++)
+        {
+            Console.WriteLine(
+                $"Name: {names[i]}, ID: {ids[i]}, Quantity: {quantities[i]}, Price: {prices[i]}"
+            );
+        }
+    }
 }

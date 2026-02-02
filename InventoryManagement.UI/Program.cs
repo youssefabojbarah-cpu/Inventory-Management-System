@@ -26,7 +26,7 @@ namespace InventoryManagementSystem
                         Console.WriteLine("--> Updating Product...");
                         break;
                     case "3":
-                        Console.WriteLine("--> Viewing Inventory...");
+                        InventoryManager.ViewInventory();
                         break;
                     case "4":
                         Console.WriteLine("Exiting... Goodbye!");
