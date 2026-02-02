@@ -13,7 +13,7 @@ namespace InventoryManagementSystem
 
             while (true) 
             {
-                ShowMenu();
+                InventoryManager.ShowMenu();
                 string choice = Console.ReadLine() ?? "";
 
                 switch (choice)
@@ -23,14 +23,17 @@ namespace InventoryManagementSystem
                         break;
 
                     case "2":
-                        Console.WriteLine("--> Updating Product...");
+                        InventoryManager.UpdateQuantity();
                         break;
+
                     case "3":
                         InventoryManager.ViewInventory();
                         break;
+
                     case "4":
                         Console.WriteLine("Exiting... Goodbye!");
                         return;
+
                     default:
                         Console.WriteLine("Invalid choice! Please try again.");
                         break;
@@ -41,20 +44,6 @@ namespace InventoryManagementSystem
                 Console.Clear(); 
             }
 
-        }
-        static void ShowMenu()
-        {
-            Console.ForegroundColor = ConsoleColor.Cyan;
-            Console.WriteLine("========================================");
-            Console.WriteLine("   INVENTORY MANAGEMENT SYSTEM          ");
-            Console.WriteLine("========================================");
-            Console.ResetColor();
-            
-            Console.WriteLine("[1] Add New Product");
-            Console.WriteLine("[2] Update Product Quantity");
-            Console.WriteLine("[3] View Current Inventory");
-            Console.WriteLine("[4] Exit Close Program");
-            Console.Write("\nChoose an option (1-4): ");
         }
     }
 }
