@@ -31,6 +31,10 @@ namespace InventoryManagementSystem
                         break;
 
                     case "4":
+                        InventoryManager.DeleteProduct();
+                        break;
+
+                    case "5":
                         Console.WriteLine("Exiting... Goodbye!");
                         return;
 

@@ -17,7 +17,8 @@ public static class InventoryManager
         Console.WriteLine("[1] Add New Product");
         Console.WriteLine("[2] Update Product Quantity");
         Console.WriteLine("[3] View Current Inventory");
-        Console.WriteLine("[4] Exit Close Program");
+        Console.WriteLine("[4] Delete Product");
+        Console.WriteLine("[5] Exit Close Program");
         Console.Write("\nChoose an option (1-4): ");
     }
     public static void AddProduct()
@@ -62,7 +63,7 @@ public static class InventoryManager
     {
         if (names.Count == 0)
         {
-            Console.WriteLine("There are no product in inventory!");
+            Console.WriteLine("There are no products in inventory!");
             return;
         }
 
@@ -107,6 +108,47 @@ public static class InventoryManager
 
         quantities[index] = newQty;
         Console.WriteLine("Quantity updated successfully!");
+    }
+    public static void DeleteProduct()
+    {
+        if (names.Count == 0)
+        {
+            Console.WriteLine("There are no products in inventory!");
+            return;
+        }
+
+        Console.WriteLine("Enter Product ID: ");
+        if (!int.TryParse(Console.ReadLine(), out int id))
+        {
+            Console.WriteLine("Invalid ID!");
+            return;
+        }
+
+        int index = ids.IndexOf(id);
+
+        if (index == -1)
+        {
+            Console.WriteLine("Product not found!");
+            return;
+        }
+
+        Console.BackgroundColor = ConsoleColor.DarkGray;
+        Console.Write("Are you sure (y/n): ");
+        string? confirm = Console.ReadLine();
+
+        if (confirm?.ToLower() != "y")
+        {
+            Console.WriteLine("Product was not deleted.");
+            return;
+        }
+
+        Console.ResetColor();
+        names.RemoveAt(index);
+        ids.RemoveAt(index);
+        quantities.RemoveAt(index);
+        prices.RemoveAt(index);
+
+        Console.WriteLine("Product deleted successfully!");
     }
 
 }
