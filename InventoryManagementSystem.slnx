@@ -1,0 +1,4 @@
+<Solution>
+  <Project Path="InventoryLibrary/InventoryLibrary.csproj" />
+  <Project Path="InventoryManagement.UI/InventoryManagement.UI.csproj" />
+</Solution>
